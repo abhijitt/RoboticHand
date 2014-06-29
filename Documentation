@@ -1,0 +1,36 @@
+Robotic Hand
+
+Motivation-
+
+The goal of this project is to build a robotic arm that is as close as possible to the human hand in it's form and function.
+
+The members of the team are- 
+Yash Sanghvi, Electrical Dual Degree, Electronics Club Convener
+Pranav Jain, Mechanical Dual Degree, Electronics Club Convener
+Abhijit Tomar, Mechanical Dual Degree, Web and Coding Club Convener
+
+
+Introduction -
+
+The project involved the use of image processing in OpenCV to detect the hand of the user. The user has to wear coloured strips of four different colours- red, yellow, blue and green - three on fingers and one on the thumb. The code then communicates with the Arduino to give the required signal to the servo motors which in turn change the position of the fingers.
+
+The code for this project has been written in C++ and is documented on github. Github link- 
+https://github.com/abhijitt/RoboticHand
+
+Working of code-
+
+The code used the web camera on the laptop to detect the colours on the hand. This is possible as the colours have a very specific range of values on the HSV scale from 0-180. The individual values of the colours are-
+Red- 110
+Yellow- 90
+Blue- 10
+Green- 30
+
+Working of Arduino-
+
+There are two positions for the fingers on the robotic arm – open and closed. Initially, all fingers are closed and the signal given to the Arduino is 0000 i.e. to keep all the the fingers closed. When a colour is detected, this value changes to 1 for the colour detected (say 0010) and a signal passes from the Arduino to the servo motor connected to the finger that corresponds to the colour detected by the web camera. The Arduino is connected to the laptop using a USB cable. The regular Arduino software has been used in order to control it and make it send the correct signal according to the input received by the webcam.
+
+Mechanical Design-
+
+The structure of the forearm has been made using two layers of thin aluminium. It has been padded in between to increase stability. There are four servo motors (one for each finger) of power 6 kg-cm  that are attached to the aluminium frame. They are connected to the arduino using jumper wires on a PCB. The fingers have been made using pieces of bendable hollow pipe. On the top end of each finger, a wire is connected that runs from inside of it to the rotor of the servo motor. When the servo moves, the wire get relaxed and the finger opens. By default, the wires are taut such that the finger remains closed.
+
+The top part of the hand has attached to it a piece of plastic that has been 3-D printed to the exact specifications using 3-D modelling software (Solidworks). It has the holes required to fasten the fingers to it built in. This part forms the palm of the hand and also serves as the support for the servo that controls the thumb since it is directly opposite to it. The servos for the other three fingers rest on the aluminium frame of the forearm.
