@@ -1,0 +1,92 @@
+#include <Servo.h>
+int f1=3;
+int f2=5;
+int f3=6;
+int t=10;
+int p=11;
+Servo finger1;
+Servo finger2;
+Servo finger3;
+Servo thumb;
+Servo palm;
+void setup()
+{
+    Serial.begin(9600);
+  finger1.attach(f1);
+  finger2.attach(f2);
+  finger3.attach(f3);
+  thumb.attach(t);
+  palm.attach(p);
+}
+ 
+ 
+int input;
+int val[6];
+void loop()
+{
+   
+  if(Serial.available()>0)
+    {
+        input=Serial.read();
+      
+        Serial.println(input);
+    for(int i=0; i<6; i++)
+      {
+      val[i]=input%2;
+       input/=2;
+      }
+    // Serial.print(val[1]);
+     if(val[0]==1)
+   {
+   finger1.write(0);
+   }
+   else
+   {
+   finger1.write(179);
+   }
+    
+     if(val[1]==1)
+   {
+   finger2.write(0);
+   }
+   else
+   {
+   finger2.write(179);
+   }
+  
+     if(val[2]==1)
+   {
+   finger3.write(0);
+   }
+   else
+   {
+   finger3.write(179);
+   }
+      if(val[3]==1)
+   {
+   thumb.write(0);
+   }
+   else
+   {
+   thumb.write(179);
+   }
+ 
+   if(val[4]==1 && val[5]==1)
+         {
+         palm.write(0);
+         } 
+   if(val[4]==1 && val[5]==0)
+         {
+         palm.write(29);
+         }
+   if(val[4]==0 && val[5]==1)
+         {
+         palm.write(60);
+         }
+   if(val[4]==0 && val[5]==0)
+         {
+         palm.write(89);
+         }
+      
+    }
+}
